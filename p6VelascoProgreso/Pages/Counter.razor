@@ -1,0 +1,130 @@
+﻿@page "/counter"
+
+<PageTitle>Progreso</PageTitle>
+
+<h1>Progreso</h1>
+
+<button class="btn btn-primary" @onclick="IncrementCount" >@titulo</button>
+
+<div>
+    <h3>Progreso: @progresoNum %</h3>
+    <div style=@progreso ></div>
+</div>
+<br>
+<div>
+    <h3>Progreso: @progresoNum2 %</h3>
+    <div style=@progreso2></div>
+</div>
+<br>
+<div>
+    <h3>Progreso: @progresoNum3 %</h3>
+    <div style=@progreso3 ></div>
+</div>
+<br>
+<div>
+    <h3>Progreso: @progresoNum4 %</h3>
+    <div style=@progreso4></div>
+</div>
+<br>
+<div>
+    <h3>Progreso: @progresoNum5 %</h3>
+    <div style=@progreso5></div>
+</div>
+<br>
+<div>
+    <h3>Progreso: @progresoNum6 %</h3>
+    <div style=@progreso6></div>
+</div>
+<br>
+
+@code {
+    private String titulo = "Iniciar Progreso";
+    private String progreso = "background-color:blue;height:24px;width:0%";
+    private String progreso2 = "background-color:green;height:24px;width:0%";
+    private String progreso3 = "background-color:red;height:24px;width:0%";
+    private String progreso4 = "background-color:yellow;height:24px;width:0%";
+    private String progreso5 = "background-color:gray;height:24px;width:0%";
+    private String progreso6 = "background-color:black;height:24px;width:0%";
+    private int progresoNum = 0;
+    private int progresoNum2 = 0;
+    private int progresoNum3 = 0;
+    private int progresoNum4 = 0;
+    private int progresoNum5 = 0;
+    private int progresoNum6 = 0;
+    private String estado = "enabled";
+
+    private async Task IncrementCount()
+    {
+        Progresar();
+        Progresar2();
+        await Progresar3();
+        Progresar4();
+        Progresar5();
+        Progresar6();
+        Task.WaitAll();
+        titulo = "Completado!!!";
+    }
+
+    private async Task Progresar()
+    {
+        for (int i = 1; i < 101; i++)
+        {
+            await Task.Delay(200);
+            progreso = "background-color:blue;height:24px;width:" + i + "%";
+            progresoNum = i;
+            StateHasChanged();
+        }
+    }
+    private async Task Progresar2()
+    {
+        for (int i = 1; i < 101; i++)
+        {
+            await Task.Delay(300);
+            progreso2 = "background-color:green;height:24px;width:" + i + "%";
+            progresoNum2 = i;
+            StateHasChanged();
+        }
+    }
+    private async Task Progresar3()
+    {
+        for (int i = 1; i < 101; i++)
+        {
+            await Task.Delay(150);
+            progreso3 = "background-color:red;height:24px;width:" + i + "%";
+            progresoNum3 = i;
+            StateHasChanged();
+        }
+    }
+    private async Task Progresar4()
+    {
+        for (int i = 1; i < 101; i++)
+        {
+            await Task.Delay(50);
+            progreso4 = "background-color:yellow;height:24px;width:" + i + "%";
+            progresoNum4 = i;
+            StateHasChanged();
+        }
+    }
+    private async Task Progresar5()
+    {
+        for (int i = 1; i < 101; i++)
+        {
+            await Task.Delay(500);
+            progreso5 = "background-color:gray;height:24px;width:" + i + "%";
+            progresoNum5 = i;
+            StateHasChanged();
+        }
+    }
+    private async Task Progresar6()
+    {
+        for (int i = 1; i < 101; i++)
+        {
+            await Task.Delay(10);
+            progreso6 = "background-color:black;height:24px;width:" + i + "%";
+            progresoNum6 = i;
+            StateHasChanged();
+        }
+    }
+
+
+}
